@@ -57,7 +57,7 @@ data:
         expr: sum (rate (container_cpu_usage_seconds_total{id="/"}[5m])) / sum (machine_cpu_cores{}) * 100 > 30
         for: 5m
         labels:
-          severity: critical
+          severity: warning
         annotations:
           summary: "CPU Usage  > 30%"
   prometheus.yml: |-
