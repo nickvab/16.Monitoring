@@ -17,12 +17,25 @@ data:
             severity: warning
           group_wait: 10s
           repeat_interval: 1m
- 
     receivers:
     - name: slack_demo
       slack_configs:
-      - api_url: https://hooks.slack.com/services/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
-        channel: '#nickvab_git'
+      - api_url: https://hooks.slack.com/services/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
+        channel: 'nickvab_git'
+          #      resolve_timeout: 1m
+          #      slack_api_url: 'https://hooks.slack.com/services/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'
+          #    receivers:
+          #    - name: 'slack_demo'
+          #      slack_configs:
+          #      - channel: 'nickvab_git'
+          #        send_resolved: true
+          #        title: "{{ range .Alerts }}{{ .Annotations.summary }}\n{{ end }}"
+          #        text: "{{ range .Alerts }}{{ .Annotations.description }}\n{{ end }}"
+          #    route:
+          #      group_interval: 20s
+          #      group_wait: 5s
+          #      receiver: 'slack_demo'
+          #      repeat_interval: 5s
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -51,11 +64,11 @@ spec:
           containerPort: 9093
         resources:
             requests:
-              cpu: 50m
-              memory: 50M
+              cpu: 200m
+              memory: 200M
             limits:
-              cpu: 50
-              memory: 50M
+              cpu: 200
+              memory: 200M
         volumeMounts:
         - name: config-volume
           mountPath: /etc/alertmanager

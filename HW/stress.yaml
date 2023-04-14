@@ -8,6 +8,13 @@ metadata:
 spec:
   containers:
   - image: docker.io/nickvab/stress:v1
+    resources:
+        requests:
+          cpu: 100m
+          memory: 200M
+        limits:
+          cpu: 100
+          memory: 200M
     command:
       - "sleep"
       - "604800"
